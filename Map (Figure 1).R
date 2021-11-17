@@ -148,7 +148,7 @@ world_polity_df<-world_polity_df%>%group_by(id)%>%mutate(regime=ifelse(ave_polit
 terr_group<-read.csv("terrorist-groups.csv")
 terr_group<-terr_group%>%filter(StrYear>=1946)%>%unite(location, Country, City, sep = ", ", remove = FALSE)
 
-register_google(key = "AIzaSyATfVWFfE52LPFqDptIS1PypLxguLVDVHE")
+register_google(key = "MYKEY")
 terr_group<-terr_group%>%mutate_geocode(location, output = c("more"), source = c("google", "dsk"))
 terr_group_point<-terr_group%>%filter(!is.na(City))%>%group_by(City)%>%mutate(citytotal=n())
 
